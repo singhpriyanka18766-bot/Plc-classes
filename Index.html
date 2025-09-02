@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PLC Pure Learning Classes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    body { font-family: Arial, sans-serif; background: #f8f9fa; margin:0; }
+    header { background: #007bff; color: white; padding: 15px; text-align: center; }
+    nav a { color: white; margin: 0 10px; text-decoration: none; }
+    .container { max-width: 900px; margin: auto; padding: 20px; }
+    .card { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    .btn { background: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; }
+    .btn:hover { background: #0056b3; }
+    textarea { width: 100%; height: 80px; }
+    #chat-box { height: 200px; overflow-y: scroll; border: 1px solid #ccc; padding: 5px; margin-bottom: 10px; }
+    img.qr { width: 200px; display: block; margin: 10px auto; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>PLC Pure Learning Classes</h1>
+    <nav>
+        <a href="#chat">AI Chat</a>
+        <a href="#payment">Payment</a>
+        <a href="#admin">Admin</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <div id="chat" class="card">
+        <h2>AI Hindi Teacher</h2>
+        <div id="chat-box"></div>
+        <textarea id="userInput" placeholder="Apna sawal likho..."></textarea><br>
+        <button class="btn" onclick="sendMessage()">Send</button>
+    </div>
+
+    <div id="payment" class="card">
+        <h2>Monthly Payment (₹100)</h2>
+        <p>Pay via QR Code:</p>
+        <img class="qr" src="your-qrcode.png" alt="QR Code">
+        <p>Or Pay to Mobile: <b>9708322445</b></p>
+    </div>
+
+    <div id="admin" class="card">
+        <h2>Admin Dashboard</h2>
+        <p>Students Registered: <span id="studentCount">0</span></p>
+        <button class="btn" onclick="addStudent()">Add Student</button>
+    </div>
+
+</div>
+
+<script>
+    let studentCount = 0;
+    function addStudent(){
+        studentCount++;
+        document.getElementById("studentCount").innerText = studentCount;
+    }
+
+    function sendMessage(){
+        let input = document.getElementById("userInput").value.trim();
+        if(input === "") return;
+        let chatBox = document.getElementById("chat-box");
+        chatBox.innerHTML += "<p><b>You:</b> " + input + "</p>";
+        // Dummy AI reply
+        setTimeout(()=>{
+            chatBox.innerHTML += "<p><b>AI:</b> " + "Yeh jawab AI se aayega (demo mode)" + "</p>";
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }, 500);
+        document.getElementById("userInput").value = "";
+    }
+</script>
+
+</body>
+</html>
